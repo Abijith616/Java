@@ -1,0 +1,21 @@
+2) Read 2 matrices from the console and perform matrix addition.
+
+import java.util.Scanner;
+
+public class MatrixAddition {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter rows and columns:");
+        int r = s.nextInt(), c = s.nextInt(), m[][] = new int[r][c];
+        System.out.println("Enter first matrix:");
+        for (int i = 0; i < r * c; i++) m[i / c][i % c] = s.nextInt();
+        System.out.println("Enter second matrix:");
+        for (int i = 0; i < r * c; i++) m[i / c][i % c] += s.nextInt();
+        System.out.println("Resultant matrix:");
+        for (int[] row : m) {
+            for (int val : row) System.out.print(val + " ");
+            System.out.println();
+        }
+        s.close();
+    }
+}
