@@ -1,0 +1,51 @@
+To display Transpose too.
+
+import java.util.Scanner;
+
+public class MatrixSymmetryCheck {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter the number of rows and columns: ");
+        int r = s.nextInt(), c = s.nextInt();
+
+        // Create the matrix
+        int[][] m = new int[r][c];
+
+        System.out.println("Enter the elements of the matrix:");
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                m[i][j] = s.nextInt();
+            }
+        }
+
+        // Check if the matrix is symmetric
+        boolean symmetric = (r == c);
+        for (int i = 0; symmetric && i < r; i++) {
+            for (int j = 0; j < i; j++) {
+                if (m[i][j] != m[j][i]) {
+                    symmetric = false;
+                    break;
+                }
+            }
+        }
+
+        // Print the result and transpose if symmetric
+        if (symmetric) {
+            System.out.println("The matrix is symmetric.");
+            System.out.println("Transposed matrix:");
+
+            // Print the transposed matrix
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+                    System.out.print(m[j][i] + " ");
+                }
+                System.out.println();
+            }
+        } else {
+            System.out.println("The matrix is not symmetric.");
+        }
+
+        s.close();
+    }
+}
