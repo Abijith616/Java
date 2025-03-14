@@ -1,0 +1,24 @@
+Read a matrix from the console and check whether it is symmetric or not
+
+import java.util.Scanner;
+
+public class MatrixSymmetryCheck {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter rows and columns:");
+        int r = s.nextInt(), c = s.nextInt();
+        int[][] m = new int[r][c];
+
+        System.out.println("Enter matrix elements:");
+        for (int i = 0; i < r * c; i++)
+            m[i / c][i % c] = s.nextInt();
+
+        boolean symmetric = (r == c);
+        for (int i = 0; symmetric && i < r; i++)
+            for (int j = 0; j < i; j++)
+                if (m[i][j] != m[j][i]) symmetric = false;
+
+        System.out.println(symmetric ? "The matrix is symmetric." : "The matrix is not symmetric.");
+        s.close();
+    }
+}
